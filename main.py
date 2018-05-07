@@ -3,6 +3,8 @@
 """
 Created on Thu Jan 25 17:13:23 2018
 
+Project: EDM segmentation
+
 @author: Zeyu Li
 """
 
