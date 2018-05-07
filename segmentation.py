@@ -104,18 +104,6 @@ def boundary_detection(y, beat_locs, beat_count, beat_size, window):
     g = scipy.signal.gaussian(2*window, window)
     kernel = np.multiply(kernel, np.multiply.outer(g.T, g))
     
-#    melspec = [np.transpose(librosa.feature.melspectrogram(y[i:i+beat_size_int-1], hop_length=beat_size_int, fmax=8000, n_mels=40))[0] for i in beat_locs]
-#    melmax = np.max(melspec, axis=1)
-#    melmax = melmax / max(melmax)
-#    ssm_melmax = squareform(1 - pdist(np.transpose([melmax]), 'euclidean'))
-#    novelty_melmax = np.concatenate([np.zeros(window), [window*2 + sum(sum(ssm_melmax[i-window:i+window, i-window:i+window] * kernel)) for i in beat_in_window], np.zeros(window)])
-#    
-#    # only take energy from low end
-#    melmax_low = np.transpose(melspec)[0]
-#    melmax_low = melmax_low / max(melmax_low)
-#    melmax = list(melmax_low)
-#    melmax_diff = [b - a for a, b in zip([0] + melmax[:-1], melmax)]
-
     mfcc = [np.transpose(librosa.feature.mfcc(y[i:i+beat_size_int-1], hop_length=beat_size_int)[:,0]) for i in beat_locs]
     ssm_mfcc = squareform(1 - pdist(mfcc, 'cosine'))
     novelty_mfcc = [window*2 + sum(sum(ssm_mfcc[i-window:i+window, i-window:i+window] * kernel)) for i in beat_in_window]
