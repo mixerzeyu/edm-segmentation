@@ -8,7 +8,7 @@ Author: Zeyu Li
 
 Email: cres@zeyu.li
 
-Code files are included:
+Code files included:
 
 annotation_reader.py: the python subroutines that read annotation from txt files in SDIF format, or mp3 tags written by Serato DJ
 
