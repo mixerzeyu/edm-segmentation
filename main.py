@@ -38,9 +38,10 @@ tempo_found_count = 0
 beat_found_count = 0
 downbeat_found_count = 0
 
-#for filename in os.listdir(directory):
-if True:
-    filename = "02 Like This.wav"
+for filename in os.listdir(directory):
+# individual tests
+#if True:
+#    filename = "02 Like This.wav"
     if filename.endswith(".wav"):
         print filename
         
@@ -137,6 +138,7 @@ if True:
             plt.legend(bbox_to_anchor=(1.02, 1), loc=2, borderaxespad=0.)
             plt.show()
         
+        # adjust boundaries based on music informed rules, discarded
 #       boundaries = boundary_adjust(boundaries, novelty, beat_count)
         
         # adjust boundaries to downbeat
